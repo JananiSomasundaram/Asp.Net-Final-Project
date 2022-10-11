@@ -1,0 +1,52 @@
+CREATE TABLE [dbo].[Employees](
+	[EmployeeId] [int] IDENTITY(1,1) NOT NULL,
+	[Name] [varchar](50) NOT NULL,
+	[Status] [varchar](50) NOT NULL,
+	[Manager] [varchar](30) NULL,
+	[Wfm_manager] [varchar](30) NULL,
+	[Email] [varchar](70) NULL,
+	[Lockstatus] [varchar](30) NULL,
+	[Experience] decimal(5,0) NULL,
+	[Profile_Id] int NULL
+	)
+
+
+CREATE TABLE [dbo].[Users](
+	[Username] [varchar](30) NOT NULL Primary key,
+	[Password] [varchar](30) NOT NULL,
+	[Name] [varchar](30) NOT NULL,
+	[Role] [varchar](30) NOT NULL,	
+	[Email] [varchar](70) NULL	
+	)
+
+
+CREATE TABLE [dbo].[Skills](
+	[Skillid] decimal(5,0) NOT NULL Primary key,	
+	[Name] [varchar](30) NOT NULL	
+	)
+
+
+CREATE TABLE [dbo].[SkillMap](
+	[Employeeid] int NULL,	
+	[Skillid] decimal(5,0) NULL,
+ CONSTRAINT FK_Employeeid FOREIGN KEY (Employeeid)
+    REFERENCES Employee(Employeeid)
+CONSTRAINT FK_Skillid FOREIGN KEY (Skillid)
+    REFERENCES Skills(Skillid)		
+	)
+
+
+
+CREATE TABLE [dbo].[Softlock](
+	[EmployeeId] [int] NULL,
+	[Manager] [varchar](30) NULL,
+	[ReqDate] [datetime] NULL,
+	[Status] [varchar](50) NULL,
+	[LastUpdated] [datetime] NULL,
+	[LockId] [int] NOT NULL,
+	[RequestMsg] [varchar](100) NULL,
+	[WfmRemark] [varchar](100) NULL,
+	[ManagerStatus] [varchar](30) NULL,
+	[ManagerStatusComment] [varchar](50) NULL,
+	[MgrLastUpdate] [datetime] NULL			
+	)

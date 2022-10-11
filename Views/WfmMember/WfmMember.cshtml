@@ -1,0 +1,70 @@
+﻿@{
+    Layout = null;
+}
+@model IEnumerable<WFManagementSystemClient.Models.WfmMember>
+<style>
+    .table {
+        font-family: Times New Roman, Times, serif;
+        border-collapse: collapse;
+        width: 60%;
+        margin-top: 60px;
+    }
+
+        .table td, #customers th {
+            border: 1px solid #ddd;
+            padding: 8px;
+        }
+
+        .table tr:nth-child(even) {
+            background-color: #f2f2f2;
+        }
+
+        .table tr:hover {
+            background-color: #ddd;
+        }
+
+        .table th {
+            padding-top: 12px;
+            padding-bottom: 12px;
+            text-align: left;
+            background-color: #Add8e6;
+            color: white;
+        }
+
+    .heading {
+        text-align: center;
+        font-size: 25px;
+        margin-top: 110px;
+        font-family: Times New Roman, Times, serif;
+    }
+</style>
+<h3 class="heading"> WELCOME </h3>
+
+<table class='table' align="center">
+
+    <tr>
+        <th> Id </th>
+        <th> Requestee </th>
+        <th> Requested Date </th>
+        <th> Manager </th>
+        <th> Request Message </th>
+        <th> View  </th>
+    </tr>
+
+    @foreach (var item in Model)
+    {
+<tr>
+    <td> @item.EmpId </td>
+    <td> @item.Requestee </td>
+    <td> @item.RequestedDate </td>
+    <td> @item.EmployeeManager </td>
+    <td> @item.RequestMessage </td>
+    @*<td><a asp-action="Edit" asp-route-id="@item.EmpId"> View Details </a></td>*@
+    <td> <input type="button" class="btn btn-default" value="View Details" onclick="Edit" /></td>
+
+</tr>
+    }
+
+
+
+</table>
